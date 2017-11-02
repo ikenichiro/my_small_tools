@@ -29,5 +29,6 @@ http.start do |h|
     p my_encoded_body
   else 
     puts "Your HTTP request may not be correct. You got '#{my_response.code}' instead of 200"
+  end
 end
 
