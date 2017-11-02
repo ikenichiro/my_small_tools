@@ -13,7 +13,6 @@ def set_same_charset str, content_type
 end
 
 # Sample: Posting name and sex to some form and seeing results.
-# Practical use should check the HTTP code ( response.code == '200') before processing.
 my_http_path = "http://example.com/some/form.php"
 my_name = "Hogehoge Foobar"
 my_sex = "male"
@@ -23,9 +22,12 @@ http.start do |h|
   my_request = Net::HTTP::Post.new(uri.path)
   my_request.set_form_data({:name=>my_name,:sex=>my_sex}, "&")
   my_response = h.request(my_request)
-  # This is where set_same_charset is called
-  my_encoded_body = set_same_charset my_response.body, my_response['content-type']
-  # Show results
-  p my_encoded_body
+  if my_response.code == '200' then
+    # This is where set_same_charset is called
+    my_encoded_body = set_same_charset my_response.body, my_response['content-type']
+    # Show results
+    p my_encoded_body
+  else 
+    puts "Your HTTP request may not be correct. You got '#{my_response.code}' instead of 200"
 end
 
