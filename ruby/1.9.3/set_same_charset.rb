@@ -14,7 +14,7 @@ end
 
 # Sample: Posting name and sex to some form and seeing results.
 # Practical use should check the HTTP code ( response.code == '200') before processing.
-my_http_path = http://hogehoge.com/some/form.php
+my_http_path = "http://example.com/some/form.php"
 my_name = "Hogehoge Foobar"
 my_sex = "male"
 uri = URI.parse(my_http_path)
