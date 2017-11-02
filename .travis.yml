@@ -1,0 +1,12 @@
+matrix:
+  include:
+    - language: ruby
+      rvm:
+        - 1.9.3
+        - jruby
+        - 1.9.3-p551
+      before_script:
+        - cd ruby/1.9.3
+      script:
+        - ruby set_same_charset.rb
+
