@@ -21,7 +21,7 @@ uri = URI.parse(my_http_path)
 http = Net::HTTP.new(uri.host, uri.port)
 http.start do |h|
   my_request = Net:HTTP::Post.new(uri.path)
-  my_request.set_form_data({:name=>my_name,:sex=>my_sex}), "&")
+  my_request.set_form_data({:name=>my_name,:sex=>my_sex}, "&")
   my_response = h.request(my_request)
   # This is where set_same_charset is called
   my_encoded_body = set_same_charset my_response.body, my_response['content-type']
